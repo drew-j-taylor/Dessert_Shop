@@ -1,3 +1,13 @@
+------------------------------------------------------------------------------
+--                                                                          --
+--  Dessert  
+--  Spec
+--  
+--  Dessert_Items is abstract parent or interface class
+--  Candy, Cookies, and Ice_Cream inherit from Dessert_Items
+--  Sundae inherits from Ice_Cream
+--                                                                          --
+------------------------------------------------------------------------------
 
 with Ada.Strings.Unbounded;
 
@@ -47,5 +57,7 @@ package Dessert is
     end record;
 
     function Calculate_Cost (Item : Sundae) return Float;
+
+    --  function "=" (L, R : Dessert_Item'Class) return Boolean;
 
 end Dessert;
