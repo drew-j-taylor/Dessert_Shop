@@ -12,6 +12,8 @@ with Dessert;
 with Array_List;
 with Ada.Text_IO;
 with Ada.Strings.Unbounded;
+with Ada.Text_IO.Editing;
+with Ada.Float_Text_IO;
 
 package body Order is 
 
@@ -38,10 +40,15 @@ package body Order is
     begin 
         Ada.Text_IO.Put_Line("Order summary:");
         for i in 0..Order_List.Size(O.Items)-1 loop 
-            Ada.Text_IO.Put_Line(Ada.Strings.Unbounded.To_String(Order_List.At_Index(O.Items,i).Name) 
-                & " - $" 
-                & Float'Image(Dessert.Calculate_Cost(Order_List.At_Index(O.Items,i))));
+            Ada.Text_IO.Put(Ada.Strings.Unbounded.To_String(Order_List.At_Index(O.Items,i).Name) & " - $" );
+            Ada.Float_Text_IO.Put(
+                Dessert.Calculate_Cost(Order_List.At_Index(O.Items,i)), 
+                Fore => 1, Aft => 2, Exp => 0);
+            Ada.Text_IO.New_Line;
         end loop;
+        Ada.Text_IO.Put("---------------" & ASCII.LF & "Order total: $");
+        Ada.Float_Text_IO.Put(Order_Cost(O), Fore => 1, Aft => 2, Exp => 0);
+        Ada.Text_IO.New_Line;
     end Print_Order;
 
 end Order;
