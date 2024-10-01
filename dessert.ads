@@ -13,8 +13,6 @@ with Ada.Strings.Unbounded;
 
 package Dessert is 
 
-    Tax_Rate : Float := 7.25;
-
     use Ada.Strings.Unbounded;
 
     type Dessert_Item is abstract tagged record

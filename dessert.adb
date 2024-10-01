@@ -15,6 +15,8 @@ package body Dessert is
 
     use Ada.Strings.Unbounded;
 
+    Tax_Rate : Float := 7.25;
+
     function Calculate_Tax (Item : Dessert_Item'Class) return Float is
     begin
         return Tax_Rate * Calculate_Cost(Item) / 100.0;
